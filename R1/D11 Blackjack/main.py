@@ -45,7 +45,7 @@ def main_loop():
         if player_total == 21 and dealer_total == 21:
             print(f"Your cards: {player_hand}, current score: {player_total}")
             print(f"Computer's first cards: {dealer_hand}")
-            print ("PUSH 21 LAME")
+            print ("PUSH 21 LAME  YOU LOSE")
         elif player_total == 21:
             print(f"Your cards: {player_hand}, current score: {player_total}")
             print(f"Computer's first card: {dealer_hand[0]}")
