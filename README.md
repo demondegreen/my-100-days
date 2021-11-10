@@ -1,5 +1,5 @@
 # my-100-days
-code from #100DaysOfCode that I have participated in
+Personal code from #100DaysOfCode in which I have participated
 
 I didn't appreciate that my checked-in code under the main 100-days-of-code fork does not count as contribution by me on the date.
 
