@@ -35,7 +35,7 @@ def format_entry_string(_entry):
     description = _entry['description']
     country = _entry['country']
     return f"{name}, {description}, from {country}."
-    
+
 ##game function def begin
 def game():
     # init score
@@ -53,13 +53,10 @@ def game():
     while gameover is False: 
         clear()
         print(logo)
+        ## load in data to A and B. 
         if score > 0:
             print (f"You're right! Current score: {score}.")
-            
-        ## load in data to A and B. 
-        # if B is non-zero then A = B, could also test if score > 0
-        if choice_b['follower_count'] != 0:
-            choice_a = choice_b
+            choice_a = choice_b            
         else:
         # otherwise load a random entry into A and remove it from the dictionary
             choice_a = get_entry()
@@ -85,14 +82,16 @@ def game():
         # if the response is wrong, set gameoverflag
         if user_response != answer:
             gameover = True
+            # print the losing message
+            print(f"Sorry, that's wrong. Final score: {score}")
         # else increment score and continue
         else:
             score += 1
+            if len(data) == 0: # deck is empty, game ends
+                gameover = True
+            # print the rare winning message
+            print(f"Wow, you cleared the deck.  You win. Final score: {score}")
     # playloop end
-
-    # print the final message, everybody loses eventually there is no win condition.
-    print(f"Sorry, that's wrong. Final score: {score}")
-
 ## game function def end
 
 #call game()
