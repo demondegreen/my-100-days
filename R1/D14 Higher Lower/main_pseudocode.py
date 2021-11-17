@@ -7,6 +7,7 @@
 ##game function def begin
     # init score
     # init gameover flag
+    # init guess variables A and B
     #playloop here 
         #clear screen
         #print the logo
