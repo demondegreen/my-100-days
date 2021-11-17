@@ -10,6 +10,24 @@ from art import vs
 #import the game data dictionary
 from game_data import data
 
+def get_answer(_a, _b):
+    a_count = int(_a['follower_count'])
+    b_count = int(_b['follower_count'])
+    if a_count > b_count:
+        return "a"
+    else:
+        return "b"
+
+def get_entry():
+    """
+    pulls an entry permanently off the global data stack and returns that entry
+    """
+    index = random.randint(0, len(data) - 1)
+    # print (index)
+    entry = data[index]
+    del data[index]
+    return entry
+
 ##game function def begin
 def game():
     # init score
@@ -38,15 +56,11 @@ def game():
             choice_a = choice_b
         else:
         # otherwise load a random entry into A and remove it from the dictionary
-            index = random.randint(0, len(data) - 1)
-            # print (index)
-            choice_a = data[index]
-            del data[index]
+            choice_a = get_entry()
 
         # load a random entry into B and remove it from the dictionary
-        index = random.randint(0, len(data) - 1)
-        choice_b = data[index]
-        del data[index]
+        choice_b = get_entry()
+
         #print the A data string
         a_name = choice_a['name']
         a_description = choice_a['description']
@@ -61,19 +75,12 @@ def game():
         b_country = choice_b['country']
         print(f"Against B: {b_name}, {b_description}, from {b_country}.")
         # print the input prompt
-        user_response = input("Who has more followers? Type 'A' or 'B': ")
+        user_response = input("Who has more followers? Type 'A' or 'B': ").lower()
         
-        ## calculate the answer, probably move to a function to calc the answer
-        answer = "0" # init answer
-        a_count = int(choice_a['follower_count'])
-        b_count = int(choice_b['follower_count'])
-        if a_count > b_count:
-            answer = "a"
-        else:
-            answer = "b"
+        ## calculate the answer, moved to a function to calc the answer
+        answer = get_answer(choice_a, choice_b)
 
         ## compare response to answer
-        user_response = user_response.lower()
         # if the response is wrong, set gameoverflag
         if user_response != answer:
             print ("NOPE")
