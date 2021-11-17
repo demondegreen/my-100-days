@@ -23,8 +23,6 @@ def game():
     choice_a['follower_count'] = 0
     choice_b['follower_count'] = 0
 
-    # choice_b = {'follower_count': 0} 
-
     #playloop here
     while gameover is False: 
         #clear screen
@@ -50,7 +48,6 @@ def game():
         choice_b = data[index]
         del data[index]
         #print the A data string
-        # Compare A: Drake, a Musician, from Canada.
         a_name = choice_a['name']
         a_description = choice_a['description']
         a_country = choice_a['country']
@@ -59,13 +56,13 @@ def game():
         print(vs)
 
         #print the B data string
-        # Against B: Shawn Mendes, a Musician, from Canada.
         b_name = choice_b['name']
         b_description = choice_b['description']
         b_country = choice_b['country']
         print(f"Against B: {b_name}, {b_description}, from {b_country}.")
         # print the input prompt
         user_response = input("Who has more followers? Type 'A' or 'B': ")
+        
         ## calculate the answer, probably move to a function to calc the answer
         answer = "0" # init answer
         a_count = int(choice_a['follower_count'])
