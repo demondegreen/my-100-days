@@ -4,8 +4,7 @@ import random
 from replit import clear
 
 #import art pieces
-from art import logo
-from art import vs
+from art import logo, vs
 
 #import the game data dictionary
 from game_data import data
@@ -36,7 +35,6 @@ def format_entry_string(_entry):
     country = _entry['country']
     return f"{name}, {description}, from {country}."
 
-##game function def begin
 def game():
     # init score
     score = 0
@@ -94,5 +92,4 @@ def game():
     # playloop end
 ## game function def end
 
-#call game()
 game()
