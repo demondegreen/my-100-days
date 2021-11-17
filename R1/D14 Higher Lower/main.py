@@ -30,6 +30,12 @@ def get_entry():
     del data[index]
     return entry
 
+def format_entry_string(_entry):
+    name = _entry['name']
+    description = _entry['description']
+    country = _entry['country']
+    return f"{name}, {description}, from {country}."
+    
 ##game function def begin
 def game():
     # init score
@@ -61,19 +67,13 @@ def game():
         choice_b = get_entry()
 
         #print the A data string
-        a_name = choice_a['name']
-        a_description = choice_a['description']
-        a_country = choice_a['country']
-        print(f"Compare A: {a_name}, {a_description}, from {a_country}.")
+        print("Compare A: " + format_entry_string(choice_a))
 
         #print the "VS" art
         print(vs)
 
         #print the B data string
-        b_name = choice_b['name']
-        b_description = choice_b['description']
-        b_country = choice_b['country']
-        print(f"Against B: {b_name}, {b_description}, from {b_country}.")
+        print(f"Against B: " + format_entry_string(choice_b))
 
         # print the input prompt
         user_response = input("Who has more followers? Type 'A' or 'B': ").lower()
