@@ -11,6 +11,9 @@ from art import vs
 from game_data import data
 
 def get_answer(_a, _b):
+    """
+    Returns the greater between inputs as string "a" or "b"
+    """
     a_count = int(_a['follower_count'])
     b_count = int(_b['follower_count'])
     if a_count > b_count:
@@ -23,7 +26,6 @@ def get_entry():
     pulls an entry permanently off the global data stack and returns that entry
     """
     index = random.randint(0, len(data) - 1)
-    # print (index)
     entry = data[index]
     del data[index]
     return entry
@@ -34,30 +36,27 @@ def game():
     score = 0
     # init gameover flag
     gameover = False
-    # init guess variables A and B
+    # create and init entry variables A and B
 
     choice_a = {}
     choice_b = {}
     choice_a['follower_count'] = 0
     choice_b['follower_count'] = 0
 
-    #playloop here
+    #playloop begin
     while gameover is False: 
-        #clear screen
         clear()
-        #print the logo
         print(logo)
-
         if score > 0:
             print (f"You're right! Current score: {score}.")
+            
         ## load in data to A and B. 
-        # if B is non-zero then A = B
+        # if B is non-zero then A = B, could also test if score > 0
         if choice_b['follower_count'] != 0:
             choice_a = choice_b
         else:
         # otherwise load a random entry into A and remove it from the dictionary
             choice_a = get_entry()
-
         # load a random entry into B and remove it from the dictionary
         choice_b = get_entry()
 
@@ -66,6 +65,7 @@ def game():
         a_description = choice_a['description']
         a_country = choice_a['country']
         print(f"Compare A: {a_name}, {a_description}, from {a_country}.")
+
         #print the "VS" art
         print(vs)
 
@@ -74,6 +74,7 @@ def game():
         b_description = choice_b['description']
         b_country = choice_b['country']
         print(f"Against B: {b_name}, {b_description}, from {b_country}.")
+
         # print the input prompt
         user_response = input("Who has more followers? Type 'A' or 'B': ").lower()
         
@@ -83,7 +84,6 @@ def game():
         ## compare response to answer
         # if the response is wrong, set gameoverflag
         if user_response != answer:
-            print ("NOPE")
             gameover = True
         # else increment score and continue
         else:
@@ -92,6 +92,7 @@ def game():
 
     # print the final message, everybody loses eventually there is no win condition.
     print(f"Sorry, that's wrong. Final score: {score}")
+
 ## game function def end
 
 #call game()
