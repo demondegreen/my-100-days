@@ -39,11 +39,11 @@ def bank_money(_cost):
 
 def process_coins(_drink):
     print(f"That costs ${_drink['cost']:0.2f}.\nPlease insert coins.")
-    quarters = int(input("How many quarters?: ")) * .25
-    dimes = int(input("How many dimes?: ")) * .10
-    nickels = int(input("How many nickels?: ")) * .05
-    pennies = int(input("How many pennies?: ")) * .01
-    coins_inserted = quarters + dimes + nickels + pennies
+    quarters = int(input("How many quarters?: "))
+    dimes = int(input("How many dimes?: "))
+    nickels = int(input("How many nickels?: "))
+    pennies = int(input("How many pennies?: "))
+    coins_inserted = quarters * .25 + dimes * .10 + nickels * .05 + pennies * .01
 
     if coins_inserted < _drink['cost']:
         print("Sorry that's not enough money.  Money refunded.")
